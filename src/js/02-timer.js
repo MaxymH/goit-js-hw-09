@@ -41,7 +41,7 @@ const options = {
         const parse = selectedDates[0]
         const date = new Date()
         if (date >= parse) {
-            Notify.failure("Please choose a date in the future 😢");
+            Notify.failure("Please choose a date in the future ");
         } else {
             button.disabled = false
         }
@@ -79,7 +79,7 @@ const start = () => {
 
     if (minus <= 0n) {
         clearInterval(timerId)
-        Notify.success('Finish 👌');
+        Notify.success('Finish ');
     }   
 }
 button.addEventListener('click', startTimer)
