@@ -77,9 +77,9 @@ const start = () => {
             }
     }  
 
-    if (minus <= 0n) {
+    if (minus <= 0) {
         clearInterval(timerId)
-        Notify.success('Finish ');
+        Notify.success('Finish');
     }   
 }
 button.addEventListener('click', startTimer)
