@@ -1,7 +1,12 @@
 
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-const form = document.querySelector('.form')
+const nav = {
+  form: document.querySelector('.form'),
+  delay: document.querySelector('[name="delay"]'),
+  step: document.querySelector('[name="step"]'),
+  amount: document.querySelector('[name="amount"]')
+}
 
 
 function createPromise(position, delay) {
@@ -29,19 +34,14 @@ function createPromise(position, delay) {
 
 const onSubmitInit = e => {
   e.preventDefault();
+  let delay = Number(nav.delay.value)
+  const step = Number(nav.step.value)
+  const amount = Number(nav.amount.value)
 
-  const delay = document.querySelector('[name="delay"]')
-  let delayNumber = Number(delay.value)
-  const step = document.querySelector('[name="step"]')
-  const stepNumber = Number(step.value)
-  const amount = document.querySelector('[name="amount"]')
-  const amountNumber = Number(step.value)
-
-  for (let i = 0; i < amountNumber; i += 1) {
-    createPromise(i + 1, delayNumber);
-    delayNumber += stepNumber;
+  for (let i = 0; i < amount; i += 1) {
+    createPromise(i + 1, delay);
+    delay += step;
   }
 }
 
-form.addEventListener('submit', onSubmitInit);
-// fff
+nav.form.addEventListener('submit', onSubmitInit);

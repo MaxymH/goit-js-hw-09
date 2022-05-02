@@ -65,22 +65,22 @@ const start = () => {
         const newDate = Date.parse(new Date())
         const minus = Date.parse(selectedTime[0]) - newDate
         const timer = convertMs(minus)
-        const { days, hours, minutes, seconds } = timer
-        nav[0].textContent = days
-        nav[1].textContent = hours
-        nav[2].textContent = minutes
-        nav[3].textContent = seconds
-    for (const i of nav) {
-            
-            if (i.textContent.length < 2) {
-                i.insertAdjacentHTML('afterbegin', 0)
-            }
-    }  
-
+        addEm(timer)
     if (minus <= 0) {
         clearInterval(timerId)
         Notify.success('Finish');
     }   
 }
+
+function addEm(timer = { days: 0, hours: 0, minutes: 0, seconds: 0 }) {
+    const { days, hours, minutes, seconds } = timer
+    nav[0].textContent = `${timer.days}`.padStart(2, 0);
+    nav[1].textContent = `${timer.hours}`.padStart(2, 0);
+    nav[2].textContent = `${timer.minutes}`.padStart(2, 0);
+    nav[3].textContent = `${timer.seconds}`.padStart(2, 0);
+}
+
+
+
 button.addEventListener('click', startTimer)
 
